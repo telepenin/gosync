@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func test_main(t testing.T){
+func TestMain(t *testing.T){
 	actual := 1000
 	r := foo()
 	if r != actual {

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	// "sync"
 )
 
 func main(){
@@ -13,21 +13,21 @@ func main(){
 func foo() int {
 
 	var c int
-	var mu sync.Mutex
-	var wg sync.WaitGroup
+	// var mu sync.Mutex
+	// var wg sync.WaitGroup
 
 	for i := 0; i < 1000; i ++ {
-		wg.Add(1)
+		// wg.Add(1)
 
-		go func(){
-			mu.Lock()
+		func(){
+			// mu.Lock()
 			c++
-			mu.Unlock()
+			// mu.Unlock()
 
-			wg.Done()
+			// wg.Done()
 		}()
 	}
-	wg.Wait()
+	// wg.Wait()
 
 	return c
 }
