@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	// "sync"
+	"sync"
+	"sync/atomic"
 )
 
 func main(){
@@ -10,24 +11,20 @@ func main(){
 	fmt.Println(r)
 }
 
-func foo() int {
+func foo() int32 {
 
-	var c int
-	// var mu sync.Mutex
-	// var wg sync.WaitGroup
+	var c int32
+	var wg sync.WaitGroup
 
 	for i := 0; i < 1000; i ++ {
-		// wg.Add(1)
+		wg.Add(1)
 
-		func(){
-			// mu.Lock()
-			c++
-			// mu.Unlock()
-
-			// wg.Done()
+		go func(){
+			atomic.AddInt32(&c, 1)
+			wg.Done()
 		}()
 	}
-	// wg.Wait()
+	wg.Wait()
 
-	return c
+	return atomic.LoadInt32(&c)
 }
