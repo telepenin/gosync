@@ -7,7 +7,7 @@ ok  	_/Users/telepenin/src/go	0.200s
 
 ## benchmarks
 
-- with sync/atomic:
+- with sync.Mutex:
 
 ```sh
 $ go test -bench=.
@@ -18,7 +18,7 @@ PASS
 ok  	_/Users/telepenin/src/go	1.577s
 ```
 
-- with sync.Mutex
+- with sync/atomic
 
 ```sh
 $ go test -bench=.
